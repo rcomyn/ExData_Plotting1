@@ -1,3 +1,17 @@
+## Exploratory Data Analysis Project 1
+
+The project assignment is described below beginning at the Introduction.
+
+The scripts require the "downloader" package and an internet connection.
+
+When the first of any of the scripts is run, it downloads the required data 
+from the Irvine Machine Learning Repository and then processes it to create
+a data frame suitable for plotting the assignment. This data frame is saved 
+to a file. When subsequent scripts are run, the data is loaded from this saved
+file so that the data does not have to downloaded again.
+
+
+
 ## Introduction
 
 This assignment uses data from
