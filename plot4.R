@@ -26,7 +26,6 @@ library(downloader)
 downloadData <- function(plotfile, urlToDownload, zipFile, dataFile, plotDataFile) {
     # Download data and unzip.
     download(urlToDownload, destfile=fileDownloaded)
-    dateDownloaded <- date()
     unzip(fileDownloaded)
     
     # Loading the data (Note: Convert "?" to NA)
@@ -58,6 +57,7 @@ downloadData <- function(plotfile, urlToDownload, zipFile, dataFile, plotDataFil
 
 if (! file.exists(plotDataFile)) {
     downloadData(plotfile, urlToDownload, zipFile, dataFile, plotDataFile)
+    dateDownloaded <- date()
 }
 
 # Read plotting data.

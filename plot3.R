@@ -26,7 +26,6 @@ library(downloader)
 downloadData <- function(plotfile, urlToDownload, zipFile, dataFile, plotDataFile) {
     # Download data and unzip.
     download(urlToDownload, destfile=fileDownloaded)
-    dateDownloaded <- date()
     unzip(fileDownloaded)
     
     # Loading the data (Note: Convert "?" to NA)
@@ -58,6 +57,7 @@ downloadData <- function(plotfile, urlToDownload, zipFile, dataFile, plotDataFil
 
 if (! file.exists(plotDataFile)) {
     downloadData(plotfile, urlToDownload, zipFile, dataFile, plotDataFile)
+    dateDownloaded <- date()
 }
 
 # Read plotting data.
@@ -66,8 +66,8 @@ hpc <- read.table(plotDataFile,
                   colClasses=c(rep("character",2), rep("numeric",7), "POSIXct"))
 
 # Create plot.
-par(mfrow = c(1,1))
 png(plotFile, height=480, width=480)
+par(mfrow = c(1,1))
 
 with(hpc, plot(DateTime, Sub_metering_1, type="l",
                xlab="", ylab="Energy sub metering", cex.axis=0.75, cex.lab=0.75))
