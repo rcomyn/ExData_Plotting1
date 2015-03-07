@@ -66,6 +66,7 @@ hpc <- read.table(plotDataFile,
                   colClasses=c(rep("character",2), rep("numeric",7), "POSIXct"))
 
 # Create plot.
+png(plotFile, height=480, width=480)
 par(mfrow = c(2,2))
 
 with(hpc, plot(DateTime, Global_active_power, type="l", cex.axis=0.75, cex.lab=0.75,
@@ -80,13 +81,8 @@ legend("topright",
        legend=c("Sub_metering_1","Sub_metering_2","Sub_metering_3"),
        col=c("black","red","blue"), lty="solid", cex=0.70, bty="n",
        y.intersp=.8, text.width = strwidth("Sub_metering_3")*.90)
-
-#seg.len=1.8,
-#y.intersp=1.15, xjust=1, yjust=1, text.width = strwidth("Sub_metering_3")*0.87
-
 with(hpc, plot(DateTime, Global_reactive_power, type="l", cex.axis=0.75, cex.lab=0.75,
                xlab="datetime", ylab="Voltage"))
 
-dev.copy(png, file=plotFile, width=480, height=480)
 dev.off()
 
